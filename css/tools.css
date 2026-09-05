@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 1.25rem;
   margin-bottom: 2rem;
+  width: 100%;
 }
 
 /* Tool Top Controls Bar */
@@ -39,11 +40,12 @@
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   border-radius: var(--radius-sm);
-  padding: 0.35rem 0.65rem;
-  font-size: 0.82rem;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.85rem;
   outline: none;
   font-family: inherit;
   transition: var(--transition);
+  min-height: 36px;
 }
 
 .select-input:focus, .text-input:focus {
@@ -56,12 +58,14 @@
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
   min-height: 440px;
+  width: 100%;
 }
 
 .editor-single {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
+  width: 100%;
 }
 
 .editor-pane {
@@ -72,6 +76,7 @@
   flex-direction: column;
   overflow: hidden;
   box-shadow: var(--shadow-sm);
+  min-width: 0; /* Prevents overflow inside grid */
 }
 
 .editor-pane-header {
@@ -81,6 +86,7 @@
   padding: 0.65rem 1rem;
   background: var(--bg-tertiary);
   border-bottom: 1px solid var(--border-color);
+  gap: 0.5rem;
 }
 
 .pane-title {
@@ -92,18 +98,21 @@
   gap: 0.5rem;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .pane-stats {
   font-size: 0.75rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
+  white-space: nowrap;
 }
 
 .pane-actions {
   display: flex;
   align-items: center;
   gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 /* Editor Textarea / Output Container */
@@ -112,6 +121,7 @@
   flex: 1;
   display: flex;
   min-height: 360px;
+  min-width: 0;
 }
 
 .editor-textarea {
@@ -131,6 +141,7 @@
   overflow-wrap: normal;
   overflow-x: auto;
   tab-size: 2;
+  -webkit-overflow-scrolling: touch;
 }
 
 .editor-textarea:focus {
@@ -151,6 +162,8 @@
   overflow-y: auto;
   white-space: pre-wrap;
   user-select: text;
+  -webkit-overflow-scrolling: touch;
+  word-break: break-word;
 }
 
 /* Validation Alert Banner */
@@ -162,6 +175,8 @@
   align-items: center;
   gap: 0.65rem;
   margin-top: 0.75rem;
+  line-height: 1.4;
+  word-break: break-word;
 }
 
 .validation-result.valid {
@@ -186,6 +201,7 @@
   transition: var(--transition);
   background: var(--bg-tertiary);
   margin-bottom: 0.75rem;
+  width: 100%;
 }
 
 .drop-zone:hover, .drop-zone.dragover {
@@ -245,6 +261,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.25rem;
+  width: 100%;
 }
 
 .jwt-token-box {
@@ -303,6 +320,7 @@
   margin-top: 1rem;
   max-height: 250px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .regex-match-pill {
@@ -314,11 +332,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5rem;
 }
 
 .regex-match-text {
   font-family: var(--font-mono);
   color: #38bdf8;
+  word-break: break-all;
 }
 
 /* Diff Checker Styling */
@@ -326,6 +346,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  width: 100%;
 }
 
 .diff-output {
@@ -339,12 +360,15 @@
   line-height: 1.6;
   max-height: 500px;
   overflow-y: auto;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .diff-line {
   display: flex;
   padding: 0.15rem 0.5rem;
   border-radius: 3px;
+  word-break: break-word;
 }
 
 .diff-line.added {
@@ -365,6 +389,7 @@
   width: 30px;
   user-select: none;
   opacity: 0.5;
+  flex-shrink: 0;
 }
 
 /* JSON Tree View */
@@ -372,6 +397,8 @@
   font-family: var(--font-mono);
   font-size: 0.85rem;
   line-height: 1.6;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .tree-node {
@@ -384,6 +411,7 @@
 
 .tree-string {
   color: #86efac;
+  word-break: break-all;
 }
 
 .tree-number {
@@ -417,11 +445,138 @@
   max-height: 260px;
   border-radius: var(--radius-sm);
   box-shadow: var(--shadow-sm);
+  object-fit: contain;
 }
 
-/* Responsive adjustments */
+/* ==========================================================================
+   Responsive Tool Adaptations (Mobile & Tablet)
+   ========================================================================== */
 @media (max-width: 900px) {
-  .editor-split, .jwt-container, .diff-container {
+  .editor-split, 
+  .jwt-container, 
+  .diff-container {
     grid-template-columns: 1fr;
+    gap: 1rem;
+    min-height: auto;
   }
 }
+
+@media (max-width: 768px) {
+  .tool-toolbar {
+    padding: 0.65rem 0.75rem;
+    gap: 0.6rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .tool-toolbar-group {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tool-toolbar-group .btn {
+    flex: 1 1 auto;
+    font-size: 0.82rem;
+    padding: 0.45rem 0.65rem;
+  }
+
+  .tool-toolbar-group .select-input {
+    flex: 1 1 100%;
+    font-size: 16px; /* Prevents auto-zoom on iOS */
+  }
+
+  .editor-wrapper {
+    min-height: 220px;
+  }
+
+  .editor-textarea,
+  .editor-output {
+    min-height: 220px;
+    max-height: 380px;
+    font-size: 14px;
+    padding: 0.75rem;
+  }
+
+  .editor-pane-header {
+    padding: 0.5rem 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .pane-actions {
+    margin-left: auto;
+  }
+
+  .pane-actions .btn {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  /* Responsive Hash Table (Mobile Cards) */
+  .hash-table, 
+  .hash-table tbody, 
+  .hash-table tr, 
+  .hash-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .hash-table thead {
+    display: none;
+  }
+
+  .hash-table tr {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .hash-table td {
+    border: none;
+    padding: 0.25rem 0;
+  }
+
+  .hash-table td.hash-algo {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--brand-cyan);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.4rem;
+    width: 100%;
+  }
+
+  .hash-table td.hash-val {
+    font-size: 0.78rem;
+    word-break: break-all;
+    padding: 0.35rem 0;
+    color: var(--text-primary);
+    line-height: 1.4;
+  }
+
+  .hash-table td:last-child {
+    margin-top: 0.4rem;
+    text-align: right;
+  }
+
+  .hash-table td:last-child .btn {
+    width: 100%;
+  }
+
+  .regex-match-pill {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .drop-zone {
+    padding: 1.25rem 0.75rem;
+  }
+}
+
