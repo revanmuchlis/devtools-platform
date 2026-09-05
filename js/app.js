@@ -361,8 +361,7 @@ export const app = {
     });
 
     // Close mobile sidebar on navigation
-    const sidebar = document.getElementById('app-sidebar');
-    if (sidebar) sidebar.classList.remove('open');
+    this.closeSidebar();
 
     // Route dispatch
     const contentEl = document.getElementById('app-content');
@@ -414,6 +413,23 @@ export const app = {
     }
   },
 
+  // Sidebar helpers for mobile
+  openSidebar() {
+    const sidebar = document.getElementById('app-sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    if (sidebar) sidebar.classList.add('open');
+    if (backdrop) backdrop.classList.add('open');
+    document.body.classList.add('sidebar-open');
+  },
+
+  closeSidebar() {
+    const sidebar = document.getElementById('app-sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    if (sidebar) sidebar.classList.remove('open');
+    if (backdrop) backdrop.classList.remove('open');
+    document.body.classList.remove('sidebar-open');
+  },
+
   // ========================================================================
   // Sidebar Rendering
   // ========================================================================
@@ -429,6 +445,15 @@ export const app = {
     });
 
     let html = `
+      <!-- Mobile Sidebar Top Header -->
+      <div class="sidebar-mobile-header">
+        <div class="sidebar-mobile-title">
+          <span>DevForge Tools</span>
+          <span class="badge-privacy" style="font-size: 0.62rem; padding: 0.15rem 0.45rem;">100% Client-Side</span>
+        </div>
+        <button id="btn-sidebar-close" class="btn-icon btn-sm" aria-label="Close navigation menu">✕</button>
+      </div>
+
       <div class="sidebar-section">
         <div class="sidebar-title">Main Navigation</div>
         <ul class="sidebar-menu">
@@ -461,6 +486,39 @@ export const app = {
       `;
     });
 
+    // Mobile Navigation Links Section inside Sidebar
+    html += `
+      <div class="sidebar-section">
+        <div class="sidebar-title">Pages & Info</div>
+        <ul class="sidebar-menu">
+          <li>
+            <a href="#/about" class="sidebar-item-btn" data-route="about">
+              <span style="width: 22px; text-align: center;">ℹ️</span>
+              <span>About DevForge</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/contact" class="sidebar-item-btn" data-route="contact">
+              <span style="width: 22px; text-align: center;">✉️</span>
+              <span>Contact Us</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/privacy" class="sidebar-item-btn" data-route="privacy">
+              <span style="width: 22px; text-align: center;">🔒</span>
+              <span>Privacy Policy</span>
+            </a>
+          </li>
+          <li>
+            <a href="#/terms" class="sidebar-item-btn" data-route="terms">
+              <span style="width: 22px; text-align: center;">📜</span>
+              <span>Terms of Use</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    `;
+
     // Sidebar Ad Slot
     html += `
       <div class="sidebar-section" style="border-bottom:none;">
@@ -470,6 +528,12 @@ export const app = {
     `;
 
     sidebar.innerHTML = html;
+
+    // Bind sidebar close button
+    const closeBtn = document.getElementById('btn-sidebar-close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => this.closeSidebar());
+    }
   },
 
   // ========================================================================
@@ -2292,12 +2356,25 @@ export const app = {
       themeBtn.addEventListener('click', () => this.toggleTheme());
     }
 
-    // Mobile Sidebar Toggle
+    // Mobile Sidebar Toggle & Backdrop
     const mobileMenuBtn = document.getElementById('btn-mobile-menu');
-    const sidebar = document.getElementById('app-sidebar');
-    if (mobileMenuBtn && sidebar) {
-      mobileMenuBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('open');
+    const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const sidebar = document.getElementById('app-sidebar');
+        if (sidebar && sidebar.classList.contains('open')) {
+          this.closeSidebar();
+        } else {
+          this.openSidebar();
+        }
+      });
+    }
+
+    if (sidebarBackdrop) {
+      sidebarBackdrop.addEventListener('click', () => {
+        this.closeSidebar();
       });
     }
 
@@ -2305,6 +2382,7 @@ export const app = {
     const modal = document.getElementById('search-modal-overlay');
     const searchInput = document.getElementById('global-search-input');
     const resultsContainer = document.getElementById('search-results-list');
+    const searchCloseBtn = document.getElementById('btn-search-close');
 
     const openSearch = () => {
       if (modal) {
@@ -2320,6 +2398,10 @@ export const app = {
     const closeSearch = () => {
       if (modal) modal.classList.remove('open');
     };
+
+    if (searchCloseBtn) {
+      searchCloseBtn.addEventListener('click', () => closeSearch());
+    }
 
     const renderSearchResults = (query) => {
       if (!resultsContainer) return;
