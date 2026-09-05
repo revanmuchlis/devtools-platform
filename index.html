@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevForge - 100% Client-Side Developer Utilities | Fast, Secure & Free</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Free online developer tools suite (like FreeFormatter): JSON Formatter & Validator, XML Validator, SQL Beautifier, Base64 Encoder/Decoder, JWT Debugger, Cryptographic Hashes (MD5, SHA-256), and Text Diff. 100% Client-Side Pure JavaScript without third-party APIs.">
+  <meta name="keywords" content="JSON formatter, XML validator, SQL beautifier, Base64 encoder, JWT decoder, MD5 hash generator, SHA256, regex tester, developer utilities, client side tools, FreeFormatter clone">
+  <meta name="author" content="DevForge Team">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="DevForge - Zero-Server Developer Utilities">
+  <meta property="og:description" content="Format, validate, encode, and debug code directly in your browser. Complete privacy guarantee: zero data uploads.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon & Stylesheets -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233b82f6'><path d='M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z'/></svg>">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/tools.css">
+  <link rel="stylesheet" href="css/ads.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+  <!-- ====================================================================
+       Header Navigation
+       ==================================================================== -->
+  <header class="app-header">
+    <div style="display: flex; align-items: center; gap: 0.75rem;">
+      <button id="btn-mobile-menu" class="btn-icon" aria-label="Toggle Navigation Menu">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+
+      <a href="#/" class="header-brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+        </div>
+        <div class="brand-info">
+          <span class="brand-title">DevForge</span>
+          <span class="brand-tagline">Client-Side Utilities</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Quick Search Input / Shortcut -->
+    <div class="header-search">
+      <div class="search-trigger js-open-search" id="header-search-trigger">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <span>Search all 17 developer tools...</span>
+        <span class="search-shortcut">Ctrl+K</span>
+      </div>
+    </div>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <div class="badge-privacy" title="All processing occurs locally in browser memory. Zero server uploads.">
+        <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        <span>100% Client-Side</span>
+      </div>
+
+      <a href="#/about" class="nav-link">About</a>
+      <a href="#/contact" class="nav-link">Contact</a>
+
+      <button id="btn-theme-toggle" class="btn-icon" aria-label="Toggle Dark and Light Theme" title="Switch Theme">
+        ☀️
+      </button>
+    </div>
+  </header>
+
+  <!-- ====================================================================
+       App Core Container (Sidebar + Content)
+       ==================================================================== -->
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <!-- Populated dynamically by app.js -->
+    </aside>
+
+    <!-- Main Workspace Content Area -->
+    <main class="app-content" id="app-content">
+      <!-- Populated dynamically by router in app.js -->
+    </main>
+  </div>
+
+  <!-- ====================================================================
+       Footer
+       ==================================================================== -->
+  <footer class="app-footer">
+    <div class="footer-content">
+      <div>
+        <div style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem;">
+          <div class="brand-icon" style="width:28px; height:28px; font-size:0.9rem;">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+          </div>
+          <span style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">DevForge</span>
+        </div>
+        <p class="footer-brand-desc">
+          High-performance, zero-latency developer and text utilities. 
+          All formatters, encoders, diffs, and cryptographic hash computations run 
+          <strong>100% locally in your browser (Pure JavaScript)</strong>.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Popular Tools</h4>
+        <ul class="footer-links">
+          <li><a href="#/json-formatter" class="footer-link">JSON Formatter & Validator</a></li>
+          <li><a href="#/xml-validator" class="footer-link">XML Formatter & Validator</a></li>
+          <li><a href="#/sql-formatter" class="footer-link">SQL Beautifier</a></li>
+          <li><a href="#/base64-tool" class="footer-link">Base64 Converter</a></li>
+          <li><a href="#/jwt-decoder" class="footer-link">JWT Debugger</a></li>
+          <li><a href="#/hash-generator" class="footer-link">MD5 / SHA-256 Hashes</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Company & Legal</h4>
+        <ul class="footer-links">
+          <li><a href="#/about" class="footer-link">About Us (Tentang Kami)</a></li>
+          <li><a href="#/privacy" class="footer-link">Privacy Policy (Kebijakan Privasi)</a></li>
+          <li><a href="#/terms" class="footer-link">Terms of Use (Syarat & Ketentuan)</a></li>
+          <li><a href="#/contact" class="footer-link">Contact Us (Kontak)</a></li>
+          <li><a href="#/cookie-policy" class="footer-link">Cookie Policy</a></li>
+          <li><a href="javascript:void(0)" class="footer-link js-cookie-settings">Cookie Preferences</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-col-title">Open Source</h4>
+        <ul class="footer-links">
+          <li><a href="#/about" class="footer-link">Security Architecture</a></li>
+          <li><a href="#/contact" class="footer-link">Advertise / Sponsorship</a></li>
+          <li><a href="#/contact" class="footer-link">Report a Bug</a></li>
+          <li><a href="#/" class="footer-link">Browse All 17 Tools</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        © 2026 DevForge Platform. Free and Open Source friendly developer tools. Zero API subscriptions.
+      </div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <span style="color: var(--brand-emerald); font-weight: 600;">● All Systems Operational</span>
+        <span>•</span>
+        <span>Version 2.5 (Client-Side)</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       Command Palette / Quick Search Modal (Ctrl+K)
+       ==================================================================== -->
+  <div id="search-modal-overlay" class="modal-overlay">
+    <div class="search-modal">
+      <div class="search-modal-header">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <input type="text" id="global-search-input" class="search-modal-input" placeholder="Type a tool name, format, or keyword (e.g. json, sql, base64, jwt, diff)..." autocomplete="off">
+        <span class="search-shortcut">ESC</span>
+      </div>
+      <div class="search-results-list" id="search-results-list">
+        <!-- Results rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript App Entry -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
