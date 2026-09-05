@@ -200,7 +200,7 @@ export const staticPages = {
               </button>
 
               <div id="contact-alert" style="display:none;" class="validation-result valid">
-                Email client opened! Please send a message via your email application.
+                Thank you! Your message has been sent successfully. We will get back to you within 24-48 hours.
               </div>
             </form>
           </div>

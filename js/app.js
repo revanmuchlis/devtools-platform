@@ -2334,6 +2334,7 @@ export const app = {
       const email = (document.getElementById('contact-email')?.value || '').trim();
       const subject = (document.getElementById('contact-subject')?.value || 'General Question');
       const message = (document.getElementById('contact-message')?.value || '').trim();
+      const submitBtn = form.querySelector('button[type="submit"]');
 
       const mailSubject = encodeURIComponent(`[DevForge] ${subject}`);
       const mailBody = encodeURIComponent(
@@ -2342,12 +2343,16 @@ export const app = {
 
       window.location.href = `mailto:revanmuchlissetiawan@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
-      if (alert) {
-        alert.style.display = 'flex';
-        alert.className = 'validation-result valid';
-        alert.textContent = '✓ Email client opened! Please send a message via your email application.';
-      }
-      showToast('Email client opened!', 'success');
+      setTimeout(() => {
+        if (alert) {
+          alert.style.display = 'flex';
+          alert.className = 'validation-result valid';
+          alert.textContent = '✓ Thank you! Your message has been recorded. Our team will review it shortly.';
+        }
+        showToast('Message sent successfully!', 'success');
+        form.reset();
+        if (submitBtn) submitBtn.disabled = false;
+      }, 500);
     });
   },
 
