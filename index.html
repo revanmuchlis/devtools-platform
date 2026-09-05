@@ -28,8 +28,8 @@
        Header Navigation
        ==================================================================== -->
   <header class="app-header">
-    <div style="display: flex; align-items: center; gap: 0.75rem;">
-      <button id="btn-mobile-menu" class="btn-icon" aria-label="Toggle Navigation Menu">
+    <div class="header-left">
+      <button id="btn-mobile-menu" class="btn-icon btn-mobile-menu" aria-label="Toggle Navigation Menu" title="Menu">
         <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
       </button>
 
@@ -44,7 +44,7 @@
       </a>
     </div>
 
-    <!-- Quick Search Input / Shortcut -->
+    <!-- Quick Search Input / Shortcut (Desktop) -->
     <div class="header-search">
       <div class="search-trigger js-open-search" id="header-search-trigger">
         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
@@ -55,19 +55,27 @@
 
     <!-- Header Actions -->
     <div class="header-actions">
-      <div class="badge-privacy" title="All processing occurs locally in browser memory. Zero server uploads.">
+      <!-- Mobile Search Button -->
+      <button class="btn-icon btn-mobile-search js-open-search" aria-label="Search Tools" title="Search Tools">
+        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+      </button>
+
+      <div class="badge-privacy header-badge-privacy" title="All processing occurs locally in browser memory. Zero server uploads.">
         <svg width="12" height="12" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
         <span>100% Client-Side</span>
       </div>
 
-      <a href="#/about" class="nav-link">About</a>
-      <a href="#/contact" class="nav-link">Contact</a>
+      <a href="#/about" class="nav-link header-nav-link">About</a>
+      <a href="#/contact" class="nav-link header-nav-link">Contact</a>
 
       <button id="btn-theme-toggle" class="btn-icon" aria-label="Toggle Dark and Light Theme" title="Switch Theme">
         ☀️
       </button>
     </div>
   </header>
+
+  <!-- Mobile Sidebar Backdrop Overlay -->
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
 
   <!-- ====================================================================
        App Core Container (Sidebar + Content)
@@ -142,7 +150,7 @@
       <div>
         © 2026 DevForge Platform. Free and Open Source friendly developer tools. Zero API subscriptions.
       </div>
-      <div style="display: flex; gap: 1rem; align-items: center;">
+      <div class="footer-status-row">
         <span style="color: var(--brand-emerald); font-weight: 600;">● All Systems Operational</span>
         <span>•</span>
         <span>Version 2.5 (Client-Side)</span>
@@ -157,7 +165,8 @@
     <div class="search-modal">
       <div class="search-modal-header">
         <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-        <input type="text" id="global-search-input" class="search-modal-input" placeholder="Type a tool name, format, or keyword (e.g. json, sql, base64, jwt, diff)..." autocomplete="off">
+        <input type="text" id="global-search-input" class="search-modal-input" placeholder="Type a tool name (e.g. json, sql, base64, jwt)..." autocomplete="off">
+        <button id="btn-search-close" class="search-modal-close" aria-label="Close search">✕</button>
         <span class="search-shortcut">ESC</span>
       </div>
       <div class="search-results-list" id="search-results-list">
