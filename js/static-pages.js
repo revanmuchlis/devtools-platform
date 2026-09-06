@@ -297,5 +297,40 @@ export const staticPages = {
         </div>
       </div>
     `;
+  },
+
+  // Tambahkan fungsi inisialisasi ini untuk memasang event listener pada form
+  initContactForm(targetEmail = 'support@devforge.local') {
+    const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const subjectSelect = document.getElementById('contact-subject');
+      const inquiryType = subjectSelect.options[subjectSelect.selectedIndex].text;
+      const message = document.getElementById('contact-message').value.trim();
+
+      const mailSubject = encodeURIComponent(`[${inquiryType}] Message from ${name}`);
+      const mailBody = encodeURIComponent(
+        `Name: ${name}\n` +
+        `Email: ${email}\n` +
+        `Inquiry Type: ${inquiryType}\n\n` +
+        `Message:\n${message}`
+      );
+
+      // Eksekusi mailto
+      window.location.href = `mailto:${targetEmail}?subject=${mailSubject}&body=${mailBody}`;
+
+      // Tampilkan notifikasi
+      const alertBox = document.getElementById('contact-alert');
+      if (alertBox) {
+        alertBox.style.display = 'block';
+      }
+
+      contactForm.reset();
+    });
   }
 };

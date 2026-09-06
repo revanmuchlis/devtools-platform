@@ -2323,33 +2323,54 @@ export const app = {
   // Contact Us Form Submission Handler
   // ========================================================================
   bindContactForm() {
-    const form = document.getElementById('devforge-contact-form');
-    const alert = document.getElementById('contact-alert');
+    // Ganti ID agar sesuai dengan HTML: 'contact-form'
+    const form = document.getElementById('contact-form');
+    const alertBox = document.getElementById('contact-alert');
     if (!form) return;
 
     form.addEventListener('submit', (e) => {
       e.preventDefault();
 
+      // 1. Ambil nilai input
       const name = (document.getElementById('contact-name')?.value || '').trim();
       const email = (document.getElementById('contact-email')?.value || '').trim();
-      const subject = (document.getElementById('contact-subject')?.value || 'General Question');
+      
+      // Ambil label/teks dari dropdown select (bukan nilainya saja)
+      const subjectSelect = document.getElementById('contact-subject');
+      const inquiryType = subjectSelect && subjectSelect.selectedIndex !== -1 
+        ? subjectSelect.options[subjectSelect.selectedIndex].text 
+        : 'General Question';
+
       const message = (document.getElementById('contact-message')?.value || '').trim();
       const submitBtn = form.querySelector('button[type="submit"]');
 
-      const mailSubject = encodeURIComponent(`[DevForge] ${subject}`);
+      // Disable tombol sejenak agar tidak terklik dua kali
+      if (submitBtn) submitBtn.disabled = true;
+
+      // 2. Format Subjek & Isi Pesan
+      const mailSubject = encodeURIComponent(`[DevForge] ${inquiryType} - ${name}`);
       const mailBody = encodeURIComponent(
-        `Nama: ${name}\nEmail: ${email}\n\n${message}`
+        `Nama: ${name}\n` +
+        `Email: ${email}\n` +
+        `Inquiry Type: ${inquiryType}\n\n` +
+        `Message:\n${message}`
       );
 
+      // 3. Trigger mailto ke email kamu
       window.location.href = `mailto:revanmuchlissetiawan@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
+      // 4. Tampilkan pesan sukses & reset form
       setTimeout(() => {
-        if (alert) {
-          alert.style.display = 'flex';
-          alert.className = 'validation-result valid';
-          alert.textContent = '✓ Thank you! Your message has been recorded. Our team will review it shortly.';
+        if (alertBox) {
+          alertBox.style.display = 'flex';
+          alertBox.className = 'validation-result valid';
+          alertBox.textContent = '✓ Thank you! Your message has been recorded. Our team will review it shortly.';
         }
-        showToast('Message sent successfully!', 'success');
+
+        if (typeof showToast === 'function') {
+          showToast('Message sent successfully!', 'success');
+        }
+
         form.reset();
         if (submitBtn) submitBtn.disabled = false;
       }, 500);
