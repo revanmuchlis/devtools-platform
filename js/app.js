@@ -752,8 +752,8 @@ export const app = {
             <option value="4">4 Spaces</option>
             <option value="tab">1 Tab</option>
           </select>
-          <button id="btn-json-format" class="btn btn-primary btn-sm">Format / Prettify</button>
-          <button id="btn-json-minify" class="btn btn-secondary btn-sm">Minify / Compact</button>
+          <button id="btn-json-format" class="btn btn-outline btn-sm">Format / Prettify</button>
+          <button id="btn-json-minify" class="btn btn-outline btn-sm">Minify / Compact</button>
           <button id="btn-json-validate" class="btn btn-outline btn-sm">Validate Syntax</button>
           <button id="btn-json-tree-toggle" class="btn btn-outline btn-sm">Tree View</button>
         </div>
@@ -805,8 +805,8 @@ export const app = {
             <option value="4">4 Spaces</option>
             <option value="tab">1 Tab</option>
           </select>
-          <button id="btn-xml-format" class="btn btn-primary btn-sm">Format XML</button>
-          <button id="btn-xml-validate" class="btn btn-secondary btn-sm">Validate Syntax</button>
+          <button id="btn-xml-format" class="btn btn-outline btn-sm">Format XML</button>
+          <button id="btn-xml-validate" class="btn btn-outline btn-sm">Validate Syntax</button>
           <button id="btn-xml-minify" class="btn btn-outline btn-sm">Minify XML</button>
         </div>
         <div class="tool-toolbar-group">
@@ -856,8 +856,8 @@ export const app = {
             <option value="4">4 Spaces</option>
             <option value="tab">1 Tab</option>
           </select>
-          <button id="btn-html-format" class="btn btn-primary btn-sm">Beautify HTML</button>
-          <button id="btn-html-minify" class="btn btn-secondary btn-sm">Minify HTML</button>
+          <button id="btn-html-format" class="btn btn-outline btn-sm">Beautify HTML</button>
+          <button id="btn-html-minify" class="btn btn-outline btn-sm">Minify HTML</button>
         </div>
         <div class="tool-toolbar-group">
           <button id="btn-html-sample" class="btn btn-outline btn-sm">Sample</button>
@@ -901,7 +901,7 @@ export const app = {
           <label style="font-size: 0.8rem; display: flex; align-items: center; gap: 0.4rem;">
             <input type="checkbox" id="sql-uppercase" checked> Uppercase Keywords
           </label>
-          <button id="btn-sql-format" class="btn btn-primary btn-sm">Beautify SQL</button>
+          <button id="btn-sql-format" class="btn btn-outline btn-sm">Beautify SQL</button>
         </div>
         <div class="tool-toolbar-group">
           <button id="btn-sql-sample" class="btn btn-outline btn-sm">Sample Query</button>
@@ -942,8 +942,8 @@ export const app = {
     return `
       <div class="tool-toolbar">
         <div class="tool-toolbar-group">
-          <button id="btn-css-format" class="btn btn-primary btn-sm">Beautify CSS</button>
-          <button id="btn-css-minify" class="btn btn-secondary btn-sm">Minify CSS</button>
+          <button id="btn-css-format" class="btn btn-outline btn-sm">Beautify CSS</button>
+          <button id="btn-css-minify" class="btn btn-outline btn-sm">Minify CSS</button>
         </div>
         <div class="tool-toolbar-group">
           <button id="btn-css-sample" class="btn btn-outline btn-sm">Sample</button>
@@ -984,8 +984,8 @@ export const app = {
     return `
       <div class="tool-toolbar">
         <div class="tool-toolbar-group">
-          <button id="btn-js-format" class="btn btn-primary btn-sm">Beautify JavaScript</button>
-          <button id="btn-js-minify" class="btn btn-secondary btn-sm">Minify JavaScript</button>
+          <button id="btn-js-format" class="btn btn-outline btn-sm">Beautify JavaScript</button>
+          <button id="btn-js-minify" class="btn btn-outline btn-sm">Minify JavaScript</button>
         </div>
         <div class="tool-toolbar-group">
           <button id="btn-js-sample" class="btn btn-outline btn-sm">Sample</button>
@@ -1026,8 +1026,8 @@ export const app = {
     return `
       <div class="tool-toolbar">
         <div class="tool-toolbar-group">
-          <button id="btn-base64-encode" class="btn btn-primary btn-sm">Encode to Base64</button>
-          <button id="btn-base64-decode" class="btn btn-secondary btn-sm">Decode from Base64</button>
+          <button id="btn-base64-encode" class="btn btn-outline btn-sm">Encode to Base64</button>
+          <button id="btn-base64-decode" class="btn btn-outline btn-sm">Decode from Base64</button>
           <button id="btn-base64-sample" class="btn btn-outline btn-sm">Sample Text</button>
         </div>
         <div class="tool-toolbar-group">
@@ -1081,8 +1081,8 @@ export const app = {
     return `
       <div class="tool-toolbar">
         <div class="tool-toolbar-group">
-          <button id="btn-url-encode" class="btn btn-primary btn-sm">URL Encode</button>
-          <button id="btn-url-decode" class="btn btn-secondary btn-sm">URL Decode</button>
+          <button id="btn-url-encode" class="btn btn-outline btn-sm">URL Encode</button>
+          <button id="btn-url-decode" class="btn btn-outline btn-sm">URL Decode</button>
           <button id="btn-url-parse-params" class="btn btn-outline btn-sm">Parse Query Params</button>
         </div>
         <div class="tool-toolbar-group">
@@ -1122,7 +1122,7 @@ export const app = {
     return `
       <div class="tool-toolbar">
         <div class="tool-toolbar-group">
-          <button id="btn-jwt-decode" class="btn btn-primary btn-sm">Decode Token</button>
+          <button id="btn-jwt-decode" class="btn btn-outline btn-sm">Decode Token</button>
           <button id="btn-jwt-sample" class="btn btn-outline btn-sm">Load Sample JWT</button>
         </div>
         <div class="tool-toolbar-group">
@@ -1171,7 +1171,7 @@ export const app = {
     return `
       <div class="tool-toolbar">
         <div class="tool-toolbar-group">
-          <button id="btn-hash-compute" class="btn btn-primary btn-sm">Generate Hashes</button>
+          <button id="btn-hash-compute" class="btn btn-outline btn-sm">Generate Hashes</button>
           <button id="btn-hash-sample" class="btn btn-outline btn-sm">Sample Text</button>
         </div>
         <div class="tool-toolbar-group">
@@ -1243,7 +1243,7 @@ export const app = {
             <option value="SHA-512">SHA-512</option>
             <option value="SHA-1">SHA-1</option>
           </select>
-          <button id="btn-hmac-compute" class="btn btn-primary btn-sm">Compute HMAC</button>
+          <button id="btn-hmac-compute" class="btn btn-outline btn-sm">Compute HMAC</button>
         </div>
         <div class="tool-toolbar-group">
           <button id="btn-hmac-sample" class="btn btn-outline btn-sm">Sample</button>
@@ -1303,10 +1303,10 @@ export const app = {
             <input type="checkbox" id="uuid-braces"> Braces { }
           </label>
 
-          <button id="btn-uuid-generate" class="btn btn-primary btn-sm">Generate UUIDs</button>
+          <button id="btn-uuid-generate" class="btn btn-outline btn-sm">Generate UUIDs</button>
         </div>
         <div class="tool-toolbar-group">
-          <button id="btn-uuid-copy" class="btn btn-secondary btn-sm">Copy All</button>
+          <button id="btn-uuid-copy" class="btn btn-outline btn-sm">Copy All</button>
           <button id="btn-uuid-clear" class="btn btn-outline btn-sm">Clear</button>
         </div>
       </div>
@@ -1374,7 +1374,7 @@ export const app = {
     return `
       <div class="tool-toolbar">
         <div class="tool-toolbar-group">
-          <button id="btn-diff-compare" class="btn btn-primary btn-sm">Compare Differences</button>
+          <button id="btn-diff-compare" class="btn btn-outline btn-sm">Compare Differences</button>
           <button id="btn-diff-sample" class="btn btn-outline btn-sm">Sample Code</button>
         </div>
         <div class="tool-toolbar-group">
@@ -1423,7 +1423,7 @@ export const app = {
           <input type="text" id="regex-pattern" class="text-input" style="flex:1; min-width: 180px; font-family: var(--font-mono);" placeholder="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})">
           <span class="toolbar-label" style="margin-left: 0.5rem;">Flags:</span>
           <input type="text" id="regex-flags" class="text-input" style="width: 60px; font-family: var(--font-mono);" value="gmi">
-          <button id="btn-regex-run" class="btn btn-primary btn-sm">Test Regex</button>
+          <button id="btn-regex-run" class="btn btn-outline btn-sm">Test Regex</button>
         </div>
         <div class="tool-toolbar-group">
           <button id="btn-regex-sample" class="btn btn-outline btn-sm">Sample</button>
@@ -1471,10 +1471,10 @@ export const app = {
           <label style="font-size: 0.8rem; display: flex; align-items: center; gap: 0.35rem; margin-left: 0.5rem;">
             <input type="checkbox" id="lorem-html-wrap"> Wrap in &lt;p&gt; tags
           </label>
-          <button id="btn-lorem-generate" class="btn btn-primary btn-sm">Generate</button>
+          <button id="btn-lorem-generate" class="btn btn-outline btn-sm">Generate</button>
         </div>
         <div class="tool-toolbar-group">
-          <button id="btn-lorem-copy" class="btn btn-secondary btn-sm">Copy</button>
+          <button id="btn-lorem-copy" class="btn btn-outline btn-sm">Copy</button>
           <button id="btn-lorem-clear" class="btn btn-outline btn-sm">Clear</button>
         </div>
       </div>
@@ -1496,8 +1496,8 @@ export const app = {
     return `
       <div class="tool-toolbar">
         <div class="tool-toolbar-group">
-          <button id="btn-md-sample" class="btn btn-primary btn-sm">Load Markdown Sample</button>
-          <button id="btn-md-copy-html" class="btn btn-secondary btn-sm">Copy Generated HTML</button>
+          <button id="btn-md-sample" class="btn btn-outline btn-sm">Load Markdown Sample</button>
+          <button id="btn-md-copy-html" class="btn btn-outline btn-sm">Copy Generated HTML</button>
         </div>
         <div class="tool-toolbar-group">
           <button id="btn-md-clear" class="btn btn-outline btn-sm">Clear</button>
