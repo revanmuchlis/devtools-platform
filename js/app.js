@@ -558,7 +558,7 @@ export const app = {
         </p>
 
         <div style="margin-top: 1.5rem; display: flex; justify-content: center; gap: 0.75rem; flex-wrap: wrap;">
-          <button class="btn btn-primary js-open-search">
+          <button class="btn btn-secondary js-open-search">
             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             Quick Search Tools (Ctrl+K)
           </button>
